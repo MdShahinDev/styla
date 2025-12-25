@@ -2,9 +2,9 @@
 
 import Link from "next/link";
 import Container from "./Container";
-import { Input } from "../ui/input";
 import HeaderRight from "../customui/HeaderRight";
 import SearchBox from "../customui/SearchBox";
+import { Menu } from "lucide-react";
 
 
 const Header = () => {
@@ -15,14 +15,17 @@ const Header = () => {
         </div>
         <nav className="shadow-sm">
             <Container>
-                <div className="flex items-center justify-between py-6 border-b">
+                {/* Desktop Header */}
+                <div className="flex items-center justify-between py-4 md:py-6 border-b">
                     {/* Logo  */}
                     <Link href="/"><h2 className="text-xl font-bold">Styla</h2></Link>
                     {/* Search */}
-                    <SearchBox/>
+                    <SearchBox />
                     {/* Accounts */}
                     <HeaderRight/>
+                    <Menu className="md:hidden"/>
                 </div>
+                {/* Main Menu */}
             </Container>
         
         </nav>
