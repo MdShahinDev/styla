@@ -48,7 +48,7 @@ const Icons = () => {
 
       {/* Sidebar */}
       <aside
-        className={`fixed top-0 right-0 h-full w-86 bg-white z-50
+        className={`fixed top-0 right-0 h-full w-86 lg:w-96 bg-white z-50
                     transform transition-transform duration-300 ease-in-out
                     flex flex-col
                     ${cartOpen ? 'translate-x-0' : 'translate-x-full'}`}
@@ -63,7 +63,7 @@ const Icons = () => {
           </button>
         </div>
 
-        {/* ================= Cart Items (Scrollable) ================= */}
+        {/* ================= Cart Items ================= */}
         <div className="flex-1 overflow-y-auto px-4 py-4 space-y-4">
           {/* Cart Item */}
           <div className="flex gap-3">
