@@ -7,7 +7,7 @@ const SearchBox = () => {
     const [isText, setIsText] = useState("");
 
   return (
-    <div className="relative hidden md:block w-md lg:w-3xl">
+    <div className="relative hidden lg:block w-md lg:w-3xl">
         <div className="flex items-center relative">
         <Input value={isText}
         onChange={(e) => setIsText(e.target.value)} className="border rounded-sm text-base focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-offset-0" placeholder="search product....."/>

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Jost } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/layout/Header";
+import NewMenu from "@/components/layout/NewMenu";
 
 const jost = Jost({
   subsets: ["latin"],
@@ -29,6 +30,7 @@ export default function RootLayout({
       
       className={`${jost.variable} ${jost.className} antialiased`}>
         <Header />
+        {/* <NewMenu/> */}
         {children}
       </body>
     </html>
