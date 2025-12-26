@@ -100,6 +100,13 @@ import boss from './brand/4.png'
 import vintage from './brand/5.png'
 import iconic from './brand/6.png'
 
+import logo from './logo/Logo.png'
+import footerlogo from './logo/Dark_Logo.png'
+
+export const logos = {
+  header: logo,
+  footer: footerlogo
+}
 export const brands = [
   natural,
   raybass,
