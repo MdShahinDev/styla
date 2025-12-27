@@ -8,7 +8,7 @@ import { UrlProps } from '@/types/AllTypes';
 // }
 const page = async ({ params }: UrlProps) => {
   const { slug } = await params;
-  const currentCategory = category.find((item) => item.slug === slug);
+  const currentCategory = category.find((item) => item.slug === slug );
   console.log('Category', currentCategory);
 
   if (!currentCategory) {
