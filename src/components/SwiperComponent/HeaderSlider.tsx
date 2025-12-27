@@ -26,7 +26,7 @@ const HeaderSlider = () => {
         <SwiperSlide>
           <div className="relative min-h-[30vh] lg:h-[70vh] w-full">
             <Image src={sliders[1]} fill priority alt="Slider 1" className="object-cover" />
-            <div className="absolute inset-0 flex flex-col pl-10  md:pl-28 text-white justify-center ">
+            <div className="absolute inset-0 flex flex-col pl-16  md:pl-28 text-white justify-center ">
               <p className="text-sm md:text-base font-medium uppercase text-gray-200 ">Trending collection</p>
               <h1 className="text-xl md:text-3xl lg:text-6xl text-white font-semibold">
                 Limited Edition For
@@ -45,7 +45,7 @@ const HeaderSlider = () => {
         <SwiperSlide>
           <div className="relative min-h-[30vh] lg:h-[70vh] w-full">
             <Image src={sliders[0]} fill priority alt="Slider 1" className="object-cover" />
-            <div className="absolute inset-0 flex flex-col pl-10  md:pl-28 text-white justify-center ">
+            <div className="absolute inset-0 flex flex-col pl-16  md:pl-28 text-white justify-center ">
               <p className="text-sm md:text-base font-medium uppercase text-gray-600 ">This week&apos;s Highlights </p>
               <h1 className="text-xl md:text-3xl lg:text-6xl text-gray-700 font-semibold">
                 Women Lace Linen
