@@ -1,17 +1,18 @@
 'use client';
 import Link from 'next/link';
 import Container from './Container';
-import { ChevronDown, Facebook, Instagram, Menu, Twitter, X, Youtube } from 'lucide-react';
+import { ChevronDown, Facebook, Grid2x2, Heart, Home, Instagram, Menu, Twitter, User, X, Youtube } from 'lucide-react';
 import { useState } from 'react';
 import SearchBox from '../customui/SearchBox';
 import Icons from '../customui/Icons';
 import { logos } from '../../data/data.js';
 import Image from 'next/image';
+import MobileBottomMenu from '../customui/MobileBottomMenu';
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [mobileDropdown, setMobileDropdown] = useState(false);
   return (
-    <header className="w-full border-b">
+    <header className="w-full border-b relative">
       {/* ================= Topbar ================= */}
       <div className="topbar hidden lg:block bg-black text-gray-200 py-2 text-center">
         <h3 className="text-sm md:text-base">
@@ -63,7 +64,7 @@ const Header = () => {
               </h3>
               <ul
                 className="absolute left-1/2 top-full -translate-x-1/2 mt-3.5 bg-white shadow-md w-max max-w-none border
-              opacity-0 invisible translate-y-3 py-10 px-14
+              opacity-0 invisible translate-y-3 py-10 px-14 z-20
               group-hover:opacity-100 group-hover:visible group-hover:translate-y-0
               transition-all duration-300 ease-out
               before:content-[''] before:absolute before:-top-3 before:left-0
@@ -292,38 +293,54 @@ const Header = () => {
             >
               <ul className="flex flex-col gap-2 text-sm">
                 <div>
-                  <h2 className="text-lg text-gray-700 mb-1 font-medium">
-                    Men Clothes 
-                  </h2>
+                  <h2 className="text-lg text-gray-700 mb-1 font-medium">Men Clothes</h2>
                   <div className="space-y-2 text-lg font-normal text-gray-500">
                     <li>
-                      <Link href="/shop" onClick={() => setMenuOpen(false)}>Handbag</Link>
+                      <Link href="/shop" onClick={() => setMenuOpen(false)}>
+                        Handbag
+                      </Link>
                     </li>
                     <li>
-                      <Link href="/shop" onClick={() => setMenuOpen(false)}>Jacket</Link>
+                      <Link href="/shop" onClick={() => setMenuOpen(false)}>
+                        Jacket
+                      </Link>
                     </li>
                     <li>
-                      <Link href="/shop" onClick={() => setMenuOpen(false)}>Short</Link>
+                      <Link href="/shop" onClick={() => setMenuOpen(false)}>
+                        Short
+                      </Link>
                     </li>
                     <li>
-                      <Link href="/shop" onClick={() => setMenuOpen(false)}>Tote Bag</Link>
+                      <Link href="/shop" onClick={() => setMenuOpen(false)}>
+                        Tote Bag
+                      </Link>
                     </li>
                   </div>
                 </div>
                 <div className="mt-4">
-                  <h2 className="text-lg text-gray-700 mb-1 font-medium">Dress <span className="bg-red-600 text-white px-2 py-0.3 rounded-sm text-xs">HOT</span></h2>
+                  <h2 className="text-lg text-gray-700 mb-1 font-medium">
+                    Dress <span className="bg-red-600 text-white px-2 py-0.3 rounded-sm text-xs">HOT</span>
+                  </h2>
                   <div className="space-y-2 text-lg font-normal text-gray-500">
                     <li>
-                      <Link href="/shop" onClick={() => setMenuOpen(false)}>Chic Style</Link>
+                      <Link href="/shop" onClick={() => setMenuOpen(false)}>
+                        Chic Style
+                      </Link>
                     </li>
                     <li>
-                      <Link href="/shop" onClick={() => setMenuOpen(false)}>Preppy Style</Link>
+                      <Link href="/shop" onClick={() => setMenuOpen(false)}>
+                        Preppy Style
+                      </Link>
                     </li>
                     <li>
-                      <Link href="/shop" onClick={() => setMenuOpen(false)}>Punk Style</Link>
+                      <Link href="/shop" onClick={() => setMenuOpen(false)}>
+                        Punk Style
+                      </Link>
                     </li>
                     <li>
-                      <Link href="/shop" onClick={() => setMenuOpen(false)}>Streetwear</Link>
+                      <Link href="/shop" onClick={() => setMenuOpen(false)}>
+                        Streetwear
+                      </Link>
                     </li>
                   </div>
                 </div>
@@ -365,6 +382,9 @@ const Header = () => {
           </li>
         </ul>
       </aside>
+
+      {/* Mobile Bottom Menu */}
+      <MobileBottomMenu />  
     </header>
   );
 };

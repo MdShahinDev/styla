@@ -23,18 +23,18 @@ const Icons = () => {
   return (
     <div>
       <div className="flex items-center gap-4">
-        <Link href={'/account'}>
+        <Link href={'/account'} className='hidden lg:block'>
           <User className="w-6 h-6 sm:w-7 sm:h-7 " />
         </Link>
-        <Link href={'/wishlist'} className="relative">
+        <Link href={'/wishlist'} className="relative hidden lg:block">
           <Heart className="w-6 h-6 sm:w-7 sm:h-7 " />
-          <span className="absolute w-4 h-4 flex items-center justify-center rounded-full text-xs -bottom-2 -right-2 font-medium bg-black text-white">
+          <span className="absolute w-5 h-5 flex items-center justify-center rounded-full text-xs -bottom-2 -right-2 font-medium bg-black text-white">
             10
           </span>
         </Link>
         <button className="relative" onClick={toggleCart}>
           <ShoppingCart className="w-6 h-6 sm:w-7 sm:h-7 " />
-          <span className="absolute w-4 h-4 flex items-center justify-center rounded-full text-xs -bottom-2 -right-2 font-medium bg-black text-white">
+          <span className="absolute w-5 h-5 flex items-center justify-center rounded-full text-xs -bottom-2 -right-2 font-medium bg-black text-white">
             10
           </span>
         </button>
