@@ -18,7 +18,7 @@ const HomePromotion = () => {
             {/* TEXT SECTION */}
             <div className="md:w-1/2 ">
               <h2 className="text-3xl font-semibold mb-4">
-                Inspiring Indians, Both Men And Women To Make Fashion & Lifestyle
+                Inspiring Bangladeshi, Both Men And Women To Make Fashion & Lifestyle
               </h2>
               <p className="font-medium mb-2">They bring an extraordinary amount of it to the table</p>
               <p className="text-gray-600 mb-6">

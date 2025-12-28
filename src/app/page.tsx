@@ -2,6 +2,7 @@ import BestSellingProduct from '@/components/HomeComponent/BestSellingProduct';
 import Categories from '@/components/HomeComponent/Categories';
 import FeatureSection from '@/components/HomeComponent/FeatureSection';
 import HomePromotion from '@/components/HomeComponent/HomePromotion';
+import HotSellingProduct from '@/components/HomeComponent/HotSellingProduct copy';
 import SectionHeading from '@/components/HomeComponent/SectionHeading';
 import HeaderSlider from '@/components/SwiperComponent/HeaderSlider';
 
@@ -15,6 +16,8 @@ export default function Home() {
       <SectionHeading title='Our Best Selling Product' subtitle='Explore Our Best Selling product'/>
       <BestSellingProduct/>
       <HomePromotion/>
+      <SectionHeading title='Our Hot Selling Product' subtitle='Explore Our Hot Selling product'/>
+      <HotSellingProduct/>
     </section>
   );
 }

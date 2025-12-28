@@ -4,7 +4,7 @@ import Container from "../layout/Container";
 
 const SectionHeading = ({title, subtitle}: SectionHeadingProps) => {
   return (
-    <div className="py-14 ">
+    <div className="py-14">
         <Container>
             <div>
                 <h2 className="text-2xl md:text-4xl font-medium text-center">{title}</h2>
