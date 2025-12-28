@@ -7,8 +7,6 @@ import Container from '../layout/Container';
 import { StarRating } from '../customui/StarRating';
 const BestSellingProduct = () => {
   const BestSellingProduct: Product[] = products.filter((item) => item.best_selling == true);
-  console.log('Best Selling', BestSellingProduct);
-
   return (
     <div>
       <Container>
@@ -21,16 +19,16 @@ const BestSellingProduct = () => {
                   <Image src={item.images[0]} alt={item.name} className="cursor-pointer mb-4" />
                 </div>
                 <p className="bg-gray-300 w-fit px-2 py-0.5 mb-2 text-gray-600 rounded-xs">{item.category}</p>
-                <Link href={`/product/${item.slug}`} className="text-base text-gray-600 min-h-[48px]">
+                <Link href={`/product/${item.slug}`} className="text-base text-gray-600 min-h-12">
                   {item.name}
                 </Link>
                 <div className="mb-2">
                   <StarRating rating={item.review.rating} />
                 </div>
                 <p className="text-black font-bold mb-2">${item.price}</p>
-                {item.color.length === 0 && item.size.length === 0 ? <Link href="/" className="mt-auto block bg-black text-white w-full text-center py-2">
+                {item.color.length === 0 && item.size.length === 0 ? <Link href="/" className="mt-auto block bg-black text-white w-full text-center py-2 hover:bg-black/90 transition-all duration-500">
                   Add to Cart
-                </Link> :<Link href={`/product/${item.slug}`} className="mt-auto block bg-black text-white w-full text-center py-2">
+                </Link> :<Link href={`/product/${item.slug}`} className="mt-auto block  bg-black text-white w-full text-center py-2 hover:bg-black/90 transition-all duration-500">
                   Select Product
                 </Link> }
               </div>

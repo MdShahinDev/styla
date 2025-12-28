@@ -1,6 +1,7 @@
 import BestSellingProduct from '@/components/HomeComponent/BestSellingProduct';
 import Categories from '@/components/HomeComponent/Categories';
 import FeatureSection from '@/components/HomeComponent/FeatureSection';
+import HomePromotion from '@/components/HomeComponent/HomePromotion';
 import SectionHeading from '@/components/HomeComponent/SectionHeading';
 import HeaderSlider from '@/components/SwiperComponent/HeaderSlider';
 
@@ -13,6 +14,7 @@ export default function Home() {
       <FeatureSection/>
       <SectionHeading title='Our Best Selling Product' subtitle='Explore Our Best Selling product'/>
       <BestSellingProduct/>
+      <HomePromotion/>
     </section>
   );
 }
