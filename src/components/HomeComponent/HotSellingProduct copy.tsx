@@ -8,11 +8,13 @@ import { StarRating } from '../customui/StarRating';
 import { Eye, Heart } from 'lucide-react';
 const HotSellingProduct = () => {
   const HotSellingProduct: Product[] = products.filter((item) => item.hot_sale == true);
+  console.log("SHahin:",HotSellingProduct);
+  
   return (
     <div>
       <Container>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
-          {HotSellingProduct.slice(6, 15).map((item) => (
+          {HotSellingProduct.slice(0,8).map((item) => (
             <div key={item.id} className="h-full">
               {/* Card */}
               <div className="h-full flex flex-col border p-2">

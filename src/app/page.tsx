@@ -4,6 +4,7 @@ import FeatureSection from '@/components/HomeComponent/FeatureSection';
 import HomePromotion from '@/components/HomeComponent/HomePromotion';
 import HotSellingProduct from '@/components/HomeComponent/HotSellingProduct copy';
 import SectionHeading from '@/components/HomeComponent/SectionHeading';
+import TShirtPromothion from '@/components/HomeComponent/TShirtPromothion';
 import HeaderSlider from '@/components/SwiperComponent/HeaderSlider';
 
 export default function Home() {
@@ -18,6 +19,7 @@ export default function Home() {
       <HomePromotion/>
       <SectionHeading title='Our Hot Selling Product' subtitle='Explore Our Hot Selling product'/>
       <HotSellingProduct/>
+      <TShirtPromothion/>
     </section>
   );
 }

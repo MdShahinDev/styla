@@ -84,7 +84,10 @@ import jeanswomen from './Product/jeans_for_women.jpg';
 import jeanswomen1 from './Product/jeans_for_women_1.jpg';
 import jeanswomen2 from './Product/jeans_for_women_2.jpg';
 import jeanswomen3 from './Product/jeans_for_women_3.jpg';
-
+import premiumbackpack from './Product/Premium_Laptop_Backpack.jpg'
+import premiumbackpack1 from './Product/Premium_Laptop_Backpack_1.jpg'
+import premiumbackpack2 from './Product/Premium_Laptop_Backpack_2.jpg'
+import premiumbackpack3 from './Product/Premium_Laptop_Backpack_3.jpg'
 import slider1 from './slider/banner_1.jpg';
 import slider2 from './slider/banner_2.jpg';
 import slider3 from './slider/banner_3.jpg';
@@ -590,7 +593,7 @@ export const products = [
   "stock_qty": 11,
   "hot_sale": true,
   "best_selling": true,
-  "images": [laptopbackpack, laptopbackpack1, laptopbackpack2, laptopbackpack3],
+  "images": [premiumbackpack, premiumbackpack1, premiumbackpack2, premiumbackpack3],
   "review": {
     "image": "user19.jpg",
     "name": "Vikas",
