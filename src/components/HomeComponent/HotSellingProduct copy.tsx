@@ -8,7 +8,6 @@ import { StarRating } from '../customui/StarRating';
 import { Eye, Heart } from 'lucide-react';
 const HotSellingProduct = () => {
   const HotSellingProduct: Product[] = products.filter((item) => item.hot_sale == true);
-  console.log("SHahin:",HotSellingProduct);
   
   return (
     <div>

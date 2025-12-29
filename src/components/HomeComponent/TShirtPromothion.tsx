@@ -6,13 +6,16 @@ import Link from 'next/link';
 const TShirtPromothion = () => {
   return (
     <div className="py-20">
-      <div className="relative w-full py-4">
+      <div className="relative h-70 bg-red-700
+        sm:h-87 
+        md:h-100 
+        lg:h-120">
         <Image
           src={banners[0]}
           alt="Banner"
-          className='fill
+          fill
         priority
-        className="object-cover"'
+        className="object-cover"
         />
         <Container>
           <div className="absolute top-1/2 -translate-y-1/2 space-y-4">
