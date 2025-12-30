@@ -113,6 +113,14 @@ import catsunglass from './category/cat_sunglass.png';
 import catwatch from './category/cat_watch.png';
 import catwedding from './category/cat_wedding_ring.png';
 
+import privacyicon from './icons/privacy.png';
+import saleicon from './icons/sale.png';
+import supporticon from './icons/support.png';
+import truckicon from './icons/truck.png';
+
+export const icons =[
+  truckicon, privacyicon,saleicon,supporticon,
+]
 
 export const category = [
   {

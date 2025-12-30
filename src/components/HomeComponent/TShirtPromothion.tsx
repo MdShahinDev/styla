@@ -24,7 +24,7 @@ const TShirtPromothion = () => {
               Round Neck Viscose <br />
               Men And Womens T-Shirt
             </h2>
-            <Link href={"/shop"} className='bg-black text-white px-6 py-2 hover:bg-black/90 transition-all duration-500'>Read More</Link>
+            <Link href={"/shop"} className='bg-black text-white px-6 py-2 hover:bg-black/90 transition-all duration-500 mt-4'>Read More</Link>
           </div>
         </Container>
       </div>

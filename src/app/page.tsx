@@ -2,7 +2,7 @@ import BestSellingProduct from '@/components/HomeComponent/BestSellingProduct';
 import Categories from '@/components/HomeComponent/Categories';
 import FeatureSection from '@/components/HomeComponent/FeatureSection';
 import HomePromotion from '@/components/HomeComponent/HomePromotion';
-import HotSellingProduct from '@/components/HomeComponent/HotSellingProduct copy';
+import HotSellingProduct from '@/components/HomeComponent/HotSellingProduct';
 import SectionHeading from '@/components/HomeComponent/SectionHeading';
 import ServiceHighlights from '@/components/HomeComponent/ServiceHighlights';
 import TShirtPromothion from '@/components/HomeComponent/TShirtPromothion';
