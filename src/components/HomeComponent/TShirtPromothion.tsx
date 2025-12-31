@@ -6,7 +6,7 @@ import Link from 'next/link';
 const TShirtPromothion = () => {
   return (
     <div className="py-20">
-      <div className="relative h-70 bg-red-700
+      <div className="relative h-70
         sm:h-87 
         md:h-100 
         lg:h-120">

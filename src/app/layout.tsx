@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Jost } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/layout/Header";
+import Mailbox from "@/components/Footer/Mailbox";
+import Footer from "@/components/Footer/Footer";
 const jost = Jost({
   subsets: ["latin"],
   variable: "--font-jost",
@@ -30,6 +32,8 @@ export default function RootLayout({
         <Header />
         {/* <NewMenu/> */}
         {children}
+        <Mailbox/>
+        <Footer/>
       </body>
     </html>
   );

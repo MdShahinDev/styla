@@ -10,7 +10,7 @@ import HeaderSlider from '@/components/SwiperComponent/HeaderSlider';
 
 export default function Home() {
   return (
-    <section className='pb-20'>
+    <section className='mb-20'>
       <HeaderSlider />
       <SectionHeading title="Shop By Category" subtitle="Browse your favourite category" />
       <Categories/>
