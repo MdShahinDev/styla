@@ -124,4 +124,10 @@
     @apply cursor-pointer;
   }
  
+  .custom-toast {
+  background: #000 !important;
+  color: #fff !important;
+  border-radius: 6px;
+  font-size: 14px;
+}
 }

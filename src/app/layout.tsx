@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "@/components/layout/Header";
 import Mailbox from "@/components/Footer/Mailbox";
 import Footer from "@/components/Footer/Footer";
+import { ToastProvider } from "@/components/Toastify/ToastProvider";
 const jost = Jost({
   subsets: ["latin"],
   variable: "--font-jost",
@@ -29,11 +30,12 @@ export default function RootLayout({
       <body
       
       className={`${jost.variable} ${jost.className} antialiased`}>
+        <ToastProvider>
         <Header />
-        {/* <NewMenu/> */}
         {children}
         <Mailbox/>
         <Footer/>
+        </ToastProvider>
       </body>
     </html>
   );

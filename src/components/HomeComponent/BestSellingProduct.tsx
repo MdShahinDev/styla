@@ -8,6 +8,7 @@ import { StarRating } from '../customui/StarRating';
 import { Eye, Heart } from 'lucide-react';
 import useCartStore from '../../store/cartStore'
 import useWishlistStore from '@/store/WishList';
+import { toast } from 'react-toastify';
 const BestSellingProduct = () => {
   const BestSellingProduct: Product[] = products.filter((item) => item.hot_sale == true);
   const addToCart = useCartStore((state)=> state.addToCart);
@@ -15,10 +16,18 @@ const wishlist = useWishlistStore((state) => state.wishlist);
   const addToWishlist = useWishlistStore(
   (state) => state.addToWishlist
 );
-
 const isInWishlist = useWishlistStore(
   (state) => state.isInWishlist
 );
+const handleAddToCart = (product : Product) => {
+  addToCart(product);
+  toast.success("Added to cart");
+};
+const handlewishlist =(product:Product)=> {
+  addToWishlist(product);
+  toast.success("Added to Wishlist");
+}
+
   return (
     <div>
       <Container>
@@ -35,7 +44,7 @@ const isInWishlist = useWishlistStore(
                      {isInWishlist(item.id) ? <button >
                         <Heart fill=''/>
                       </button> :
-                      <button  onClick={() => addToWishlist(item)
+                      <button  onClick={() => handlewishlist(item)
   }>
                         <Heart />
                       </button>
@@ -57,7 +66,7 @@ const isInWishlist = useWishlistStore(
                 <p className="text-black font-bold mb-2">${item.price}</p>
                 {item.color.length === 0 && item.size.length === 0 ? (
                   <button
-                  onClick={()=> addToCart(item)}
+                  onClick={() => handleAddToCart(item)}
                     className="mt-auto block bg-black text-white w-full text-center py-2 hover:bg-black/90 transition-all duration-500"
                   >
                     Add to Cart

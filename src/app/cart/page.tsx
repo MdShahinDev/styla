@@ -5,9 +5,7 @@ const page = () => {
   return (
     <div>
       <PageHeading title="My Cart" subtitle="Cart" />
-      <Container>
-        
-      </Container>
+     <Container></Container>
     </div>
   );
 };
