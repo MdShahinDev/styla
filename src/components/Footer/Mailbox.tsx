@@ -4,7 +4,7 @@ import mailbanner from '../../data/banner/newsletter.jpg'
 const Mailbox = () => {
   return (
     <div>
-    <div className="relative h-70 bg-red-700
+    <div className="relative h-70
         sm:h-87 
         md:h-100 
         lg:h-70">

@@ -420,7 +420,7 @@ export const products = [
   "cat_slug": "men",
   "inStock": true,
   "color": ["Brown"],
-  "size": ["7", "8", "9", "10"],
+  "size": ["M", "L", "XL"],
   "brand": "boss",
   "stock_qty": 10,
   "hot_sale": true,
@@ -530,7 +530,7 @@ export const products = [
   "cat_slug": "men",
   "inStock": true,
   "color": ["Black", "Blue"],
-  "size": ["7", "8", "9", "10"],
+  "size": ["M", "L", "XL"],
   "brand": "natural",
   "stock_qty": 25,
   "hot_sale": false,
@@ -640,7 +640,7 @@ export const products = [
   "cat_slug": "men",
   "inStock": true,
   "color": ["Gold", "Pink"],
-  "size": ["6", "7", "8", "9"],
+  "size": ["M", "L", "XL"],
   "brand": "iconic",
   "stock_qty": 9,
   "hot_sale": true,
@@ -697,5 +697,4 @@ export const products = [
     "review_text": "Trendy shoes with great comfort."
   }
 },
-
 ]
