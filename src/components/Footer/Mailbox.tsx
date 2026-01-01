@@ -17,7 +17,7 @@ const Mailbox = () => {
         />
         <Container>
           <div className="absolute top-1/2 -translate-y-1/2 space-y-4 px-4 md:pd-0">
-            <h2 className="text-xl font-bold md:text-3xl">
+            <h2 className="text-xl font-bold md:text-3xl tracking-tight leading-tight">
              Sign Up & Subscribe To Our Newsletter
             </h2>
             <p className="text-base md:text-lg">Subscribe to our latest newsletter to get news about special discounts and upcoming sales</p>
