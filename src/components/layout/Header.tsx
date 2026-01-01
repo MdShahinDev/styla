@@ -11,8 +11,10 @@ import MobileBottomMenu from '../customui/MobileBottomMenu';
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [mobileDropdown, setMobileDropdown] = useState(false);
+
+
   return (
-    <header className="w-full border-b relative">
+    <header className="w-full relative">
       {/* ================= Topbar ================= */}
       <div className="topbar hidden lg:block bg-black text-gray-200 py-2 text-center">
         <h3 className="text-sm md:text-base">
@@ -23,8 +25,7 @@ const Header = () => {
           </Link>
         </h3>
       </div>
-
-      <Container>
+        <Container>
         {/* ================= Middlebar ================= */}
         <div className="flex items-center justify-between py-4">
           <button className="lg:hidden" onClick={() => setMenuOpen(true)}>

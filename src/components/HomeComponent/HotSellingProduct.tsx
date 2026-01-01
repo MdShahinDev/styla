@@ -6,9 +6,21 @@ import Link from 'next/link';
 import Container from '../layout/Container';
 import { StarRating } from '../customui/StarRating';
 import { Eye, Heart } from 'lucide-react';
+import useCartStore from '@/store/cartStore';
+import useWishlistStore from '@/store/WishList';
 const HotSellingProduct = () => {
   const HotSellingProduct: Product[] = products.filter((item) => item.hot_sale == true);
-  
+  const addToCart = useCartStore((state)=> state.addToCart);
+
+const wishlist = useWishlistStore((state) => state.wishlist);
+const addToWishlist = useWishlistStore(
+  (state) => state.addToWishlist
+);
+
+const isInWishlist = useWishlistStore(
+  (state) => state.isInWishlist
+);
+
   return (
     <div>
       <Container>
@@ -22,9 +34,15 @@ const HotSellingProduct = () => {
                     <Image src={item.images[0]} alt={item.name} className="cursor-pointer mb-4" />
                     <div
                       className="  absolute top-4 right-8 flex flex-col gap-4 opacity-100 md:opacity-0 translate-x-6 transition-all duration-500 ease-out md:group-hover:opacity-100 group-hover:translate-x-0">
-                      <button>
+                      {isInWishlist(item.id) ? <button >
+                        <Heart fill=''/>
+                      </button> :
+                      <button  onClick={() => addToWishlist(item)
+  }>
                         <Heart />
                       </button>
+                      }
+                      
                       <button>
                         <Eye />
                       </button>
@@ -43,12 +61,11 @@ const HotSellingProduct = () => {
                 </div>
                 <p className="text-black font-bold mb-2">${item.price}</p>
                 {item.color.length === 0 && item.size.length === 0 ? (
-                  <Link
-                    href="/"
+                  <button onClick={()=> addToCart(item)}
                     className="mt-auto block bg-black text-white w-full text-center py-2 hover:bg-black/90 transition-all duration-500"
                   >
                     Add to Cart
-                  </Link>
+                  </button>
                 ) : (
                   <Link
                     href={`/product/${item.slug}`}

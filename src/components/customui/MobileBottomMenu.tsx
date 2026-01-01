@@ -1,9 +1,12 @@
 "use client";
 
+import useWishlistStore from "@/store/WishList";
 import { Grid2x2, Heart, Home, User } from "lucide-react";
 import Link from "next/link";
 
 const MobileBottomMenu = () => {
+  const wishlist = useWishlistStore((state) => state.wishlist);
+const totalWishlistItem = wishlist.length;
   return (
     <div className="fixed p-1 bottom-0 left-0 w-full z-40 bg-white border-t lg:hidden">
         <div className='flex justify-between px-4 py-2'>
@@ -18,7 +21,7 @@ const MobileBottomMenu = () => {
           <Link href={'/wishlist'} className=' relative flex flex-col items-center '>
           <Heart/>
           <p className='text-sm font-medium'>Wishlist</p>
-          <span className='absolute right-0 w-5 h-5 bg-black text-white rounded-full text-xs flex items-center justify-center font-medium top-1'>10</span>
+          <span className='absolute right-0 w-5 h-5 bg-black text-white rounded-full text-xs flex items-center justify-center font-medium top-1'>{totalWishlistItem}</span>
           </Link>
           <Link href={'/account'} className='flex flex-col items-center '>
           <User/>
