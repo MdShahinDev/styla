@@ -8,12 +8,11 @@ import useCartStore from '@/store/cartStore';
 import { Trash } from 'lucide-react';
 import Link from 'next/link';
 import { Product } from '@/types/product';
-import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 const Page = () => {
   const cartItem = useCartStore((state) => state.cart);
   const addToCart = useCartStore((state) => state.addToCart);
   const decreaseQuantity = useCartStore((state) => state.decreaseQuantity);
-  const [shipping, setShipping] = useState<'flat' | 'pickup'>('flat');
 
   const handleAddToCart = (product: Product) => {
     addToCart(product);
@@ -22,11 +21,16 @@ const Page = () => {
     decreaseQuantity(productId);
   };
   const removeFromCart = useCartStore((state) => state.removeFromCart);
-  let sum = 0;
+  let sum = 20;
   for (let i = 0; i < cartItem.length; i++) {
     const item = cartItem[i];
     sum += item.price * item.quantity;
   }
+   const router = useRouter();
+  
+    const checkout = () => {
+      router.push('/checkout');
+    };
   return (
     <div>
       <PageHeading title="My Cart" subtitle="Cart" />
@@ -100,17 +104,15 @@ const Page = () => {
               <div className="border-b border-gray-300">
                 <div className="sub_total flex justify-between border-b border-gray-300 pb-4 w-full my-4">
                   <p className="font-medium text-lg">Subtotal</p>
-                  <p className="font-medium text-lg">$16</p>
+                  <p className="font-medium text-lg">${sum - 20}</p>
                 </div>
                 <div className="shipping_method">
                   <div className="flat_rate flex justify-between w-full my-4">
                     <label className="flex items-center gap-2 font-medium text-lg">
                       <input
                         type="radio"
-                        name="shipping"
-                        value="flat"
-                        checked={shipping === 'flat'}
-                        onChange={(e) => setShipping(e.target.value as 'flat')}
+                        name="shipping"     
+                        checked          
                       />
                       Flat rate:
                     </label>
@@ -121,9 +123,6 @@ const Page = () => {
                       <input
                         type="radio"
                         name="shipping"
-                        value="pickup"
-                        checked={shipping === 'pickup'}
-                        onChange={(e) => setShipping(e.target.value as 'pickup')}
                       />
                       Local Pickup:
                     </label>
@@ -136,7 +135,7 @@ const Page = () => {
                   <p className="font-medium text-lg">Total</p>
                   <p className="font-medium text-lg">$ {sum}</p>
                 </div>
-                <Button className="bg-black w-full text-white font-medium uppercase">Proccess to checkout</Button>
+                <Button onClick={checkout} className="bg-black w-full text-white font-medium uppercase">Proccess to checkout</Button>
                 <p className="text-sm font-bold mt-4 text-center text-gray-600">Guaranteed Safe And Secure Checkout</p>
                 <Image src={paymentsticker} alt="Payment Sticker" className="my-2" />
               </div>
