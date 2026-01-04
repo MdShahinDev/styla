@@ -11,7 +11,6 @@ import { Product } from '@/types/product';
 import { useState } from 'react';
 const Page = () => {
   const cartItem = useCartStore((state) => state.cart);
-  const totalItems = cartItem.reduce((total, item) => total + item.quantity, 0);
   const addToCart = useCartStore((state) => state.addToCart);
   const decreaseQuantity = useCartStore((state) => state.decreaseQuantity);
   const [shipping, setShipping] = useState<'flat' | 'pickup'>('flat');
@@ -44,17 +43,32 @@ const Page = () => {
                   <p className="w-1/8 text-lg font-medium ">SubTotal</p>
                 </div>
                 {cartItem.map((item) => (
-                  <div key={item.id} className="table_data hidden lg:flex items-center  my-4">
-                    <p className="w-5/8 flex items-center gap-2 text-lg">
+                  <div
+                    key={item.id}
+                    className="table_data border p-4 my-4
+               grid grid-cols-1 gap-4
+               lg:flex lg:items-center lg:gap-0"
+                  >
+                    {/* Product */}
+                    <div className="flex items-center gap-3 lg:w-5/8">
                       <Trash
                         size={17}
                         onClick={() => removeFromCart(item.id)}
                         className="cursor-pointer text-red-500"
-                      />{' '}
-                      <Image src={item.images[0]} alt="{item.name" className="w-30 h-30" /> {item.name}
-                    </p>
-                    <p className="w-1/8">$ {item.price}</p>
-                    <div className="w-1/8">
+                      />
+                      <Image src={item.images[0]} alt={item.name} className="w-20 h-20 object-cover" />
+                      <p className="text-lg font-medium">{item.name}</p>
+                    </div>
+
+                    {/* Price */}
+                    <div className="flex justify-between lg:block lg:w-1/8">
+                      <span className="text-sm text-gray-500 lg:hidden">Price</span>
+                      <span>$ {item.price}</span>
+                    </div>
+
+                    {/* Quantity */}
+                    <div className="flex justify-between items-center lg:block lg:w-1/8">
+                      <span className="text-sm text-gray-500 lg:hidden">Quantity</span>
                       <div className="flex items-center border rounded w-fit">
                         <button
                           onClick={() => handleDecrease(item.id)}
@@ -71,7 +85,12 @@ const Page = () => {
                         </button>
                       </div>
                     </div>
-                    <p className="w-1/8">$ {item.quantity * item.price}</p>
+
+                    {/* Total */}
+                    <div className="flex justify-between lg:block lg:w-1/8">
+                      <span className="text-sm text-gray-500 lg:hidden">Total</span>
+                      <span className="font-semibold">$ {item.quantity * item.price}</span>
+                    </div>
                   </div>
                 ))}
               </div>
