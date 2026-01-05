@@ -35,8 +35,16 @@ const Page = () => {
     <div>
       <PageHeading title="My Cart" subtitle="Cart" />
       <Container>
-        {cartItem ? (
-          <div className="flex flex-col lg:flex-row justify-start gap-4 my-8">
+        {cartItem.length ==0 ? (
+          
+           <div className="text-center my-6 space-y-4">
+            <div className="text-center  text-lg md:text-2xl font-semibold">Your Cart is Empty.</div>
+            <Link href={'/shop'} className="bg-black text-white px-8 py-2">
+              Go to Shop Page
+            </Link>
+          </div>
+        ) : (
+         <div className="flex flex-col lg:flex-row justify-start gap-4 my-8">
             <div className="cart_product w-full lg:w-3/4 ">
               <h1 className="text-xl md:text-2xl font-medium">Cart Summary</h1>
               <div className="product my-4">
@@ -140,13 +148,6 @@ const Page = () => {
                 <Image src={paymentsticker} alt="Payment Sticker" className="my-2" />
               </div>
             </div>
-          </div>
-        ) : (
-          <div className="text-center my-6 space-y-4">
-            <div className="text-center  text-lg md:text-2xl font-semibold">Your Cart is Empty.</div>
-            <Link href={'/shop'} className="bg-black text-white px-8 py-2">
-              Go to Shop Page
-            </Link>
           </div>
         )}
       </Container>
