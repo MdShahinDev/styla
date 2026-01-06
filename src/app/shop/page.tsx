@@ -3,7 +3,7 @@ import { StarRating } from '@/components/customui/StarRating';
 import PageHeading from '@/components/HomeComponent/PageHeading';
 import Container from '@/components/layout/Container';
 import { getAllProducts } from '@/lib/getProducts';
-import useCartStore from '@/store/cartStore';
+import { useCartStore } from '@/store/cartStore';
 import useWishlistStore from '@/store/WishList';
 import { Product } from '@/types/product';
 import { Eye, Filter, Heart, X } from 'lucide-react';

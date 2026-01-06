@@ -4,11 +4,11 @@ import PageHeading from '@/components/HomeComponent/PageHeading';
 import Container from '@/components/layout/Container';
 import paymentsticker from '../../data/others/payment.png';
 import Image from 'next/image';
-import useCartStore from '@/store/cartStore';
 import { Trash } from 'lucide-react';
 import Link from 'next/link';
 import { Product } from '@/types/product';
 import { useRouter } from 'next/navigation';
+import { useCartStore } from '@/store/cartStore';
 const Page = () => {
   const cartItem = useCartStore((state) => state.cart);
   const addToCart = useCartStore((state) => state.addToCart);

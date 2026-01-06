@@ -9,5 +9,10 @@ export type CartStore ={
   addToCart: (product: Product) => void;
   removeFromCart: (id: string) => void;
   clearCart: () => void;
-    decreaseQuantity: (productId: string) => void;
+  decreaseQuantity: (productId: string) => void;
 }
+export type OrderStore = {
+  lastOrder: CartItem[];
+  setLastOrder: (items: CartItem[]) => void;
+};
+

@@ -51,7 +51,7 @@ const ProductCard = ({ product }: { product: Product }) => {
 
                     <p className="text-base font-medium mt-6">We have a size chart behind each set of pictures. You can also check our size information in the Product Description. If you have any questions about the size, you can contact our customer service.</p>
                     
-                    {product.color && (
+                    {product.color.length > 0 && (
                      <div className="my-6">
                            <p>
                             Color: {product.color.map((item,i)=> (
@@ -61,7 +61,7 @@ const ProductCard = ({ product }: { product: Product }) => {
                      </div>
                     
                     )}
-                    {product.size && (
+                    {product.size.length > 0 && (
                      <div className="my-6">
                            <p>
                             Size: {product.size.map((item,i)=> (

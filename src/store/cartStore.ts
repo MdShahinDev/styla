@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
-import { CartStore } from '@/types/cart';
+import { CartStore, OrderStore } from '@/types/cart';
 
 const useCartStore = create<CartStore>()(
   persist<CartStore>(
@@ -45,4 +45,8 @@ const useCartStore = create<CartStore>()(
   )
 );
 
-export default useCartStore;
+const useOrderStore = create<OrderStore>((set) => ({
+  lastOrder: [],
+  setLastOrder: (items) => set({ lastOrder: items }),
+}));
+export  {useCartStore, useOrderStore};

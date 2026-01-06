@@ -4,9 +4,9 @@ import Link from 'next/link';
 import { useState } from 'react';
 import Button from './Button';
 import { useRouter } from 'next/navigation';
-import useCartStore from '@/store/cartStore';
 import Image from 'next/image';
 import useWishlistStore from '@/store/WishList';
+import { useCartStore } from '@/store/cartStore';
 
 const Icons = () => {
   const [cartOpen, setCartOpen] = useState(false);

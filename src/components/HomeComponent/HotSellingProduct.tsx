@@ -6,9 +6,9 @@ import Link from 'next/link';
 import Container from '../layout/Container';
 import { StarRating } from '../customui/StarRating';
 import { Eye, Heart } from 'lucide-react';
-import useCartStore from '@/store/cartStore';
 import useWishlistStore from '@/store/WishList';
 import { toast } from 'react-toastify';
+import { useCartStore } from '@/store/cartStore';
 const HotSellingProduct = () => {
   const HotSellingProduct: Product[] = products.filter((item) => item.hot_sale == true);
   const addToCart = useCartStore((state) => state.addToCart);
