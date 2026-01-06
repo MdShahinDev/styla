@@ -1,5 +1,5 @@
 'use client';
-import { AlignRight, Heart, ShoppingBasket, ShoppingCart, Trash, User, Van, X } from 'lucide-react';
+import { Heart, ShoppingBasket, ShoppingCart, Trash, User, Van, X } from 'lucide-react';
 import Link from 'next/link';
 import { useState } from 'react';
 import Button from './Button';
