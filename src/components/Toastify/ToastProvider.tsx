@@ -18,8 +18,8 @@ export function ToastProvider({ children }: { children: React.ReactNode }) {
         pauseOnHover
         draggable 
         transition={Zoom}
-         className="custom-toast-container"
-        toastClassName="custom-toast"
+        //  className="custom-toast-container"
+        // toastClassName="custom-toast"
         />
     </>
   );

@@ -26,25 +26,24 @@ const Page = () => {
     const item = cartItem[i];
     sum += item.price * item.quantity;
   }
-   const router = useRouter();
-  
-    const checkout = () => {
-      router.push('/checkout');
-    };
+  const router = useRouter();
+
+  const checkout = () => {
+    router.push('/checkout');
+  };
   return (
     <div>
       <PageHeading title="My Cart" subtitle="Cart" />
       <Container>
-        {cartItem.length ==0 ? (
-          
-           <div className="text-center my-6 space-y-4">
+        {cartItem.length == 0 ? (
+          <div className="text-center my-6 space-y-4">
             <div className="text-center  text-lg md:text-2xl font-semibold">Your Cart is Empty.</div>
             <Link href={'/shop'} className="bg-black text-white px-8 py-2">
               Go to Shop Page
             </Link>
           </div>
         ) : (
-         <div className="flex flex-col lg:flex-row justify-start gap-4 my-8">
+          <div className="flex flex-col lg:flex-row justify-start gap-4 my-8">
             <div className="cart_product w-full lg:w-3/4 ">
               <h1 className="text-xl md:text-2xl font-medium">Cart Summary</h1>
               <div className="product my-4">
@@ -61,7 +60,6 @@ const Page = () => {
                grid grid-cols-1 gap-4
                lg:flex lg:items-center lg:gap-0"
                   >
-                    {/* Product */}
                     <div className="flex items-center gap-3 lg:w-5/8">
                       <Trash
                         size={17}
@@ -69,16 +67,30 @@ const Page = () => {
                         className="cursor-pointer text-red-500"
                       />
                       <Image src={item.images[0]} alt={item.name} className="w-20 h-20 object-cover" />
-                      <p className="text-lg font-medium">{item.name}</p>
+                      <div>
+                        <p className="text-lg font-medium">{item.name}</p>
+                        {item.color?.length > 0 && (
+                          <div className="flex flex-wrap items-center gap-2 text-sm text-gray-600">
+                            <span className="font-medium">Color:</span>
+                            {item.color.map((c) => (
+                              <span key={c}>{c}</span>
+                            ))}
+                          </div>
+                        )}
+                        {item.size?.length > 0 && (
+                          <div className="flex flex-wrap items-center gap-2 text-sm text-gray-600 mt-1">
+                            <span className="font-medium">Size:</span>
+                            {item.size.map((s) => (
+                              <span key={s}>{s}</span>
+                            ))}
+                          </div>
+                        )}
+                      </div>
                     </div>
-
-                    {/* Price */}
                     <div className="flex justify-between lg:block lg:w-1/8">
                       <span className="text-sm text-gray-500 lg:hidden">Price</span>
                       <span>$ {item.price}</span>
                     </div>
-
-                    {/* Quantity */}
                     <div className="flex justify-between items-center lg:block lg:w-1/8">
                       <span className="text-sm text-gray-500 lg:hidden">Quantity</span>
                       <div className="flex items-center border rounded w-fit">
@@ -97,8 +109,6 @@ const Page = () => {
                         </button>
                       </div>
                     </div>
-
-                    {/* Total */}
                     <div className="flex justify-between lg:block lg:w-1/8">
                       <span className="text-sm text-gray-500 lg:hidden">Total</span>
                       <span className="font-semibold">$ {item.quantity * item.price}</span>
@@ -117,21 +127,14 @@ const Page = () => {
                 <div className="shipping_method">
                   <div className="flat_rate flex justify-between w-full my-4">
                     <label className="flex items-center gap-2 font-medium text-lg">
-                      <input
-                        type="radio"
-                        name="shipping"     
-                        checked          
-                      />
+                      <input type="radio" name="shipping" checked />
                       Flat rate:
                     </label>
                     <p>$20</p>
                   </div>
                   <div className="local_pickup flat_rate flex justify-between w-full my-4">
                     <label className="flex items-center gap-2 font-medium text-lg">
-                      <input
-                        type="radio"
-                        name="shipping"
-                      />
+                      <input type="radio" name="shipping" />
                       Local Pickup:
                     </label>
                     <p>$5</p>
@@ -143,7 +146,9 @@ const Page = () => {
                   <p className="font-medium text-lg">Total</p>
                   <p className="font-medium text-lg">$ {sum}</p>
                 </div>
-                <Button onClick={checkout} className="bg-black w-full text-white font-medium uppercase">Proccess to checkout</Button>
+                <Button onClick={checkout} className="bg-black w-full text-white font-medium uppercase">
+                  Proccess to checkout
+                </Button>
                 <p className="text-sm font-bold mt-4 text-center text-gray-600">Guaranteed Safe And Secure Checkout</p>
                 <Image src={paymentsticker} alt="Payment Sticker" className="my-2" />
               </div>

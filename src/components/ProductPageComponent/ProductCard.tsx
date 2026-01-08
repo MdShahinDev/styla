@@ -1,87 +1,174 @@
-"use client";
+'use client';
 
-import { Product } from "@/types/product";
-import Image from "next/image";
-import { useState } from "react";
-import Container from "../layout/Container";
+import { Product } from '@/types/product';
+import Image from 'next/image';
+import { useState } from 'react';
+import Container from '../layout/Container';
+import { Eye, Gift, Heart, Truck } from 'lucide-react';
+import { useCartStore } from '@/store/cartStore';
+import useWishlistStore from '@/store/WishList';
+import { toast } from 'react-toastify';
+import { useRouter } from 'next/navigation';
+import ProductTab from './ProductTab';
 
 const ProductCard = ({ product }: { product: Product }) => {
   const [thumbnail, setThumbnail] = useState(product.images[0]);
+  const [color, setColor] = useState(product.color[0]);
+  const [size, setSize] = useState(product.size[0]);
+  const wishlist = useWishlistStore((state) => state.wishlist);
+  const addToCart = useCartStore((state) => state.addToCart);
+  const addToWishlist = useWishlistStore((state) => state.addToWishlist);
+  const cartItem = useCartStore((state) => state.cart.find((item) => item.id === product.id));
+  const quantity = cartItem?.quantity ?? 1;
+  const [localQty, setLocalQty] = useState(quantity);
+    const router = useRouter();
+  const isWishlisted = () => {
+    return wishlist.some((item) => item.id === product.id);
+  };
+  const handlewishlist = (product: Product) => {
+    addToWishlist(product);
+    toast.success('Added to Wishlist');
+  };
+  const removeFromWishlist = useWishlistStore((state) => state.removeFromWishlist);
+  const handleRemoveFromWishlist = (id: string) => {
+    removeFromWishlist(id);
+    toast.error('Removed from wishlist');
+  };
+  const increaseQty = () => {
+    setLocalQty((prev) => prev + 1);
+  };
 
+  const decreaseQty = () => {
+    setLocalQty((prev) => Math.max(1, prev - 1));
+  };
+
+  const handleAddToCart = (product: Product) => {
+    const cartProduct = {
+      ...product,
+      selectedColor: color,
+      selectedSize: size,
+      quantity: localQty,
+    };
+    addToCart(cartProduct);
+    toast.success('Added to cart');
+  };
+  const checkout = () => {
+     const cartProduct = {
+      ...product,
+      selectedColor: color,
+      selectedSize: size,
+      quantity: localQty,
+    };
+    addToCart(cartProduct);
+    router.push('/checkout');
+  };
   return (
     <Container>
       <div className="flex flex-col md:flex-row gap-16 my-10">
-                <div className="flex gap-3">
-                    <div className="flex flex-col gap-3">
-                        {product.images.map((image, index) => (
-                            <div key={index} onClick={() => setThumbnail(image)} className="border max-w-24 border-gray-500/30 rounded overflow-hidden cursor-pointer" >
-                                <Image src={image} alt={`Thumbnail ${index + 1}`} />
-                            </div>
-                        ))}
-                    </div>
+        <div className="flex gap-3 shrink-0">
+          <div className="flex flex-col gap-3">
+            {product.images.map((image, index) => (
+              <div
+                key={index}
+                onClick={() => setThumbnail(image)}
+                className="border max-w-24 border-gray-500/30 rounded overflow-hidden cursor-pointer"
+              >
+                <Image src={image} alt={`Thumbnail ${index + 1}`} />
+              </div>
+            ))}
+          </div>
 
-                    <div className="border border-gray-500/30 max-w-100 rounded overflow-hidden">
-                        <Image src={thumbnail} alt="Selected product" className="w-full h-full object-cover" />
-                    </div>
-                </div>
+          <div className="border border-gray-500/30 max-w-100 rounded overflow-hidden">
+            <Image src={thumbnail} alt="Selected product" className="w-full h-full object-cover" />
+          </div>
+        </div>
 
-                <div className="text-sm w-full md:w-1/2">
-                    <h1 className="text-3xl font-medium">{product.name}</h1>
+        <div className="text-sm w-full md:w-1/2 md:flex-1">
+          <h1 className="text-3xl font-medium">{product.name}</h1>
 
-                    {/* <div className="flex items-center gap-0.5 mt-1">
-                        {Array(5).fill('').map((_, i) => (
-                            product.rating > i ? (
-                                <svg key={i} width="14" height="13" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M8.049.927c.3-.921 1.603-.921 1.902 0l1.294 3.983a1 1 0 0 0 .951.69h4.188c.969 0 1.371 1.24.588 1.81l-3.388 2.46a1 1 0 0 0-.364 1.118l1.295 3.983c.299.921-.756 1.688-1.54 1.118L9.589 13.63a1 1 0 0 0-1.176 0l-3.389 2.46c-.783.57-1.838-.197-1.539-1.118L4.78 10.99a1 1 0 0 0-.363-1.118L1.028 7.41c-.783-.57-.38-1.81.588-1.81h4.188a1 1 0 0 0 .95-.69z" fill="#615fff" />
-                                </svg>
-                            ) : (
-                                <svg width="14" height="13" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M8.04894 0.927049C8.3483 0.00573802 9.6517 0.00574017 9.95106 0.927051L11.2451 4.90983C11.379 5.32185 11.763 5.60081 12.1962 5.60081H16.3839C17.3527 5.60081 17.7554 6.84043 16.9717 7.40983L13.5838 9.87132C13.2333 10.126 13.0866 10.5773 13.2205 10.9894L14.5146 14.9721C14.8139 15.8934 13.7595 16.6596 12.9757 16.0902L9.58778 13.6287C9.2373 13.374 8.7627 13.374 8.41221 13.6287L5.02426 16.0902C4.24054 16.6596 3.18607 15.8934 3.48542 14.9721L4.7795 10.9894C4.91338 10.5773 4.76672 10.126 4.41623 9.87132L1.02827 7.40983C0.244561 6.84043 0.647338 5.60081 1.61606 5.60081H5.8038C6.23703 5.60081 6.62099 5.32185 6.75486 4.90983L8.04894 0.927049Z" fill="#615fff" fill-opacity="0.35" />
-                                </svg>
-                            )
-                        ))}
-                        <p className="text-base ml-2">({product.rating})</p>
-                    </div> */}
+          <div className="mt-6">
+            <p className="text-[#0000FF] text-lg font-semibold">MRP: ${product.price}</p>
+            {/* <p className="text-2xl font-medium">MRP: ${product.offerPrice}</p> */}
+            <span className="text-gray-500/70">(inclusive of all taxes)</span>
+          </div>
 
-                    <div className="mt-6">
-                        <p className="text-gray-500/70 ">MRP: ${product.price}</p>
-                        {/* <p className="text-2xl font-medium">MRP: ${product.offerPrice}</p> */}
-                        <span className="text-gray-500/70">(inclusive of all taxes)</span>
-                    </div>
+          <p className="text-base font-medium mt-6">
+            We have a size chart behind each set of pictures. You can also check our size information in the Product
+            Description. If you have any questions about the size, you can contact our customer service.
+          </p>
 
-                    <p className="text-base font-medium mt-6">We have a size chart behind each set of pictures. You can also check our size information in the Product Description. If you have any questions about the size, you can contact our customer service.</p>
-                    
-                    {product.color.length > 0 && (
-                     <div className="my-6">
-                           <p>
-                            Color: {product.color.map((item,i)=> (
-                                <button className="border px-2 py-1 mr-2" key={i}>{item}</button>
-                            ))}
-                        </p>
-                     </div>
-                    
-                    )}
-                    {product.size.length > 0 && (
-                     <div className="my-6">
-                           <p>
-                            Size: {product.size.map((item,i)=> (
-                                <button className="border px-2 py-1 mr-2" key={i}>{item}</button>
-                            ))}
-                        </p>
-                     </div>
-                    
-                    )}
-
-                    <div className="flex items-center mt-10 gap-4 text-base">
-                        <button className="w-full py-3.5 cursor-pointer font-medium bg-gray-100 text-gray-800/80 hover:bg-gray-200 transition" >
-                            Add to Cart
-                        </button>
-                        <button className="w-full py-3.5 cursor-pointer font-medium bg-black text-white hover:opacity-90  transition" >
-                            Buy now
-                        </button>
-                    </div>
-                </div>
+          {product.color.length > 0 && (
+            <div className="my-6">
+              <p>
+                Color:{' '}
+                {product.color.map((item, i) => (
+                  <button
+                    onClick={() => setColor(item)}
+                    className={`px-2 py-1 mr-2 border ${color === item ? 'border-red-600' : 'border-gray-300'}`}
+                    key={i}
+                  >
+                    {item}
+                  </button>
+                ))}
+              </p>
             </div>
+          )}
+          {product.size.length > 0 && (
+            <div className="my-6">
+              <p>
+                Size:
+                {product.size.map((item, i) => (
+                  <button
+                    onClick={() => setSize(item)}
+                    className={`border px-2 py-1 mr-2 ${size === item ? 'border-red-600' : 'border-gray-300'}`}
+                    key={i}
+                  >
+                    {item}
+                  </button>
+                ))}
+              </p>
+            </div>
+          )}
+          <div className="flex justify-between items-center lg:block lg:w-1/8 my-4">
+            <span className="text-sm text-gray-500 lg:hidden">Quantity</span>
+            <div className="flex items-center border rounded w-fit">
+              <button onClick={decreaseQty} className="px-3 py-1 text-gray-600 hover:bg-gray-100">
+                −
+              </button>
+              <span className="px-4 text-sm">{localQty}</span>
+              <button onClick={increaseQty} className="px-3 py-1 text-gray-600 hover:bg-gray-100">
+                +
+              </button>
+            </div>
+          </div>
+
+          <div className="flex items-center mt-10 gap-4 text-base">
+            <button
+              onClick={() => handleAddToCart(product)}
+              className="w-full py-3.5 cursor-pointer font-medium bg-gray-100 text-gray-800/80 hover:bg-gray-200 transition"
+            >
+              Add to Cart
+            </button>
+            <button onClick={checkout} className="w-full py-3.5 cursor-pointer font-medium bg-black text-white hover:opacity-90  transition">
+              Buy now
+            </button>
+          </div>
+          <button
+            onClick={() => (isWishlisted() ? handleRemoveFromWishlist(product.id) : handlewishlist(product))}
+            className="wishlist flex items-center gap-2 my-6 cursor-pointer"
+          >
+            <Heart size={17} fill={isWishlisted() ? 'red' : 'none'} stroke={isWishlisted() ? 'red' : 'currentColor'} />{' '}
+            <p>WISHLIST</p>
+          </button>
+          <div className='my-4 border-t pt-2'>
+            <p className='flex items-center gap-1 mb-2 text-base'><Eye size={17}/>33 people are viewing this right now</p>
+            <p className='flex items-center gap-1 mb-2 text-base'><Truck size={17}/>Estimated Delivery : Up to 4 business days</p>
+            <p className='flex items-center gap-1 mb-2 text-base'><Gift size={17}/>Free Shipping & Returns : On all orders over $200</p>
+          </div>
+        </div>
+      </div>
+
+      <ProductTab product={product} />
     </Container>
   );
 };
